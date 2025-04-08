@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileMenuToggle.addEventListener('click', function() {
       mainNav.classList.toggle('active');
       mobileMenuToggle.classList.toggle('active');
+      
+      // Set --item-index for each nav item to create staggered animation
+      const navItems = document.querySelectorAll('.nav-list li');
+      navItems.forEach((item, index) => {
+        item.style.setProperty('--item-index', index);
+      });
     });
   }
   
@@ -36,6 +42,97 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  // Services Carousel
+  const serviceItems = document.querySelectorAll('.services-carousel-item');
+  const servicePrevBtn = document.querySelector('.services-carousel-control.prev');
+  const serviceNextBtn = document.querySelector('.services-carousel-control.next');
+  const serviceDots = document.querySelectorAll('.services-dot');
+  
+  let serviceCurrentIndex = 0;
+  
+  // Function to show a specific service slide
+  function showServiceSlide(index) {
+    // Hide all service slides
+    serviceItems.forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Update service indicators
+    serviceDots.forEach(dot => {
+      dot.classList.remove('active');
+    });
+    
+    // Show the current service slide and indicator
+    if (serviceItems[index]) {
+      serviceItems[index].classList.add('active');
+    }
+    
+    if (serviceDots[index]) {
+      serviceDots[index].classList.add('active');
+    }
+    
+    serviceCurrentIndex = index;
+  }
+  
+  // Previous service button
+  if (servicePrevBtn) {
+    servicePrevBtn.addEventListener('click', () => {
+      let newIndex = serviceCurrentIndex - 1;
+      if (newIndex < 0) {
+        newIndex = serviceItems.length - 1;
+      }
+      showServiceSlide(newIndex);
+    });
+  }
+  
+  // Next service button
+  if (serviceNextBtn) {
+    serviceNextBtn.addEventListener('click', () => {
+      let newIndex = serviceCurrentIndex + 1;
+      if (newIndex >= serviceItems.length) {
+        newIndex = 0;
+      }
+      showServiceSlide(newIndex);
+    });
+  }
+  
+  // Service indicator clicks
+  serviceDots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const index = parseInt(dot.getAttribute('data-index'));
+      showServiceSlide(index);
+    });
+  });
+  
+  // Auto-slide for services carousel
+  let serviceAutoSlideInterval;
+  
+  function startServiceAutoSlide() {
+    serviceAutoSlideInterval = setInterval(() => {
+      let newIndex = serviceCurrentIndex + 1;
+      if (newIndex >= serviceItems.length) {
+        newIndex = 0;
+      }
+      showServiceSlide(newIndex);
+    }, 6000); // Change service slide every 6 seconds
+  }
+  
+  function stopServiceAutoSlide() {
+    clearInterval(serviceAutoSlideInterval);
+  }
+  
+  // Start auto-slide for services
+  if (serviceItems.length > 0) {
+    startServiceAutoSlide();
+    
+    // Pause auto-slide on hover
+    const servicesContainer = document.querySelector('.services-carousel-container');
+    if (servicesContainer) {
+      servicesContainer.addEventListener('mouseenter', stopServiceAutoSlide);
+      servicesContainer.addEventListener('mouseleave', startServiceAutoSlide);
+    }
+  }
   
   // Carousel Functionality
   const carouselItems = document.querySelectorAll('.carousel-item');

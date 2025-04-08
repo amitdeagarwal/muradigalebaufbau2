@@ -204,18 +204,33 @@ section {
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
-  height: 21px;
+  height: 24px;
   background: transparent;
   border: none;
   cursor: pointer;
+  position: relative;
+  z-index: 1000;
+  padding: 0;
 }
 
 .bar {
   height: 3px;
   width: 100%;
-  background-color: var(--text-color);
+  background-color: var(--primary-color);
   border-radius: 1px;
   transition: transform 0.3s, opacity 0.3s;
+}
+
+.mobile-menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
 }
 
 .header-contact {
@@ -548,8 +563,104 @@ section {
   background-color: var(--background-color);
 }
 
+/* Services Carousel Styling */
+.services-carousel-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.services-carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.services-carousel-track {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 450px;
+}
+
+.services-carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin: 0 auto;
+}
+
+.services-carousel-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+  z-index: 10;
+}
+
+.services-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--primary-color);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.services-carousel-control:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.services-carousel-control.prev {
+  left: 10px;
+}
+
+.services-carousel-control.next {
+  right: 10px;
+}
+
+.services-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 2rem;
+}
+
+.services-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.services-dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+/* Legacy grid fallback */
 .services-grid {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
 }
@@ -711,8 +822,45 @@ section {
 }
 
 .contact-icon {
-  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
   margin-right: 1rem;
+  background-color: var(--primary-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.contact-icon::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.contact-icon-phone::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM12 3C7 3 3 7 3 12h2c0-3.9 3.1-7 7-7s7 3.1 7 7h2c0-5-4-9-9-9z'/%3E%3C/svg%3E");
+}
+
+.contact-icon-email::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z'/%3E%3C/svg%3E");
+}
+
+.contact-icon-location::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.1 2 5 5.1 5 9c0 5.3 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5c-1.4 0-2.5-1.1-2.5-2.5S10.6 6.5 12 6.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5z'/%3E%3C/svg%3E");
+}
+
+.contact-icon-time::before {
+  content: '';
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffffff' viewBox='0 0 24 24'%3E%3Cpath d='M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z'/%3E%3C/svg%3E");
 }
 
 .contact-info-item h4 {
@@ -841,12 +989,22 @@ footer {
   }
 
   .main-nav {
-    flex-basis: 100%;
-    display: none;
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    z-index: 999;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
 
   .main-nav.active {
-    display: block;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    padding: 1rem 0;
   }
   
   .language-selector {
@@ -858,16 +1016,38 @@ footer {
   .nav-list {
     flex-direction: column;
     gap: 0;
+    padding: 1rem;
   }
 
   .nav-list li {
     width: 100%;
-    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .main-nav.active .nav-list li {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: calc(0.1s * var(--item-index, 0));
+  }
+  
+  .nav-list li:last-child {
+    border-bottom: none;
   }
 
   .nav-list a {
     display: block;
-    padding: 1rem 0;
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-list a:hover {
+    background-color: var(--background-alt);
+    border-radius: 4px;
   }
 
   .hero h1 {
