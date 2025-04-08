@@ -1,7 +1,7 @@
 """
-Minimal Flask app for serving static HTML files
+Minimal Flask app for serving static website files
 This file exists only to support Replit's workflow system
-The actual site is static HTML, CSS and JS
+The actual website is built with pure HTML, CSS, and JavaScript
 """
 from flask import Flask, send_from_directory
 
@@ -10,10 +10,10 @@ app = Flask(__name__, static_url_path='', static_folder='.')
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
-    if path != "" and path[-1] == '/':
-        path = path[:-1]
-    if path == "":
+    # Serve index.html for root or trailing slashes
+    if path == "" or path[-1] == '/':
         return send_from_directory('.', 'index.html')
+    # Serve requested file
     return send_from_directory('.', path)
 
 if __name__ == "__main__":

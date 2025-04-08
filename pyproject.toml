@@ -1,9 +1,9 @@
 [project]
-name = "repl-nix-workspace"
-version = "0.1.0"
-description = "Add your description here"
+name = "muradi-gartenbau-website"
+version = "1.0.0"
+description = "Eine responsive statische Website für Muradi Garten- und Landschaftsbau"
 requires-python = ">=3.11"
 dependencies = [
     "flask>=3.1.0",
-    "openai>=1.72.0",
+    "gunicorn>=23.0.0",
 ]
