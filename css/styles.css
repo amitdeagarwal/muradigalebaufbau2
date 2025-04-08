@@ -249,12 +249,23 @@ section {
   color: white;
 }
 
+/* Language selector styles improved */
 [data-lang] {
-  display: none;
+  display: none !important;
 }
 
-[data-lang].active {
-  display: block;
+/* Make sure DE is shown by default */
+[data-lang="de"] {
+  display: block !important;
+}
+
+/* When English is active */
+html[lang="en"] [data-lang="en"] {
+  display: block !important;
+}
+
+html[lang="en"] [data-lang="de"] {
+  display: none !important;
 }
 
 /* Hero Section */

@@ -64,6 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to set the active language
   function setActiveLanguage(lang) {
+    // Set the document language
+    document.documentElement.lang = lang;
+    
     // Activate the correct language button
     langButtons.forEach(button => {
       if (button.getAttribute('data-lang') === lang) {
@@ -73,10 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Show elements for the selected language and hide others
+    // For older browsers that might not support CSS attribute selectors well
+    // Also manually update display properties
     languageElements.forEach(element => {
-      if (element.getAttribute('data-lang') === lang) {
-        element.style.display = '';
+      const elementLang = element.getAttribute('data-lang');
+      if (elementLang === lang) {
+        element.style.display = 'block';
       } else {
         element.style.display = 'none';
       }
