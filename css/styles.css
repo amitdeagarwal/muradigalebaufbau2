@@ -1,13 +1,13 @@
 /* Base Styles */
 :root {
-  --primary-color: #2e7d32;
-  --primary-light: #60ad5e;
-  --primary-dark: #005005;
-  --secondary-color: #e8f5e9;
-  --text-color: #333333;
-  --text-light: #666666;
+  --primary-color: #1A535C;
+  --primary-light: #4ECDC4;
+  --primary-dark: #14424A;
+  --secondary-color: #EFF7F6;
+  --text-color: #2F4858;
+  --text-light: #566E7C;
   --background-color: #ffffff;
-  --background-alt: #f9f9f9;
+  --background-alt: #F7FFF7;
   --border-color: #dddddd;
   --header-height: 80px;
   --font-main: 'Arial', sans-serif;
@@ -478,7 +478,7 @@ section {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(46, 125, 50, 0.8);
+  background-color: rgba(26, 83, 92, 0.8);
   color: white;
   padding: 10px;
   text-align: center;

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <style>
+    .text { font-family: Arial, sans-serif; font-weight: bold; }
+    .main-text { fill: #1A535C; font-size: 18px; }
+    .tagline { fill: #4ECDC4; font-size: 12px; }
+    .leaf { fill: #4ECDC4; }
+    .leaf-dark { fill: #1A535C; }
+  </style>
+  
+  <!-- Leaf design left -->
+  <path class="leaf" d="M30,20 C20,30 25,45 40,45 C30,30 40,20 30,20 Z" />
+  <path class="leaf-dark" d="M35,25 C28,33 30,45 42,42 C35,32 40,25 35,25 Z" />
+  
+  <!-- Stylized water/wave for pools -->
+  <path class="leaf" d="M20,50 C25,47 30,48 35,50 C40,52 45,52 50,50 C45,53 40,54 35,52 C30,50 25,50 20,50 Z" />
+  
+  <!-- Company name -->
+  <text x="60" y="35" class="text main-text">MURADI</text>
+  <text x="60" y="55" class="text main-text">GARTENBAU</text>
+  
+  <!-- Tagline -->
+  <text x="60" y="70" class="text tagline">Garten- und Landschaftsbau</text>
+</svg>
