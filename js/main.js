@@ -19,6 +19,62 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // Language Switcher
+  const langButtons = document.querySelectorAll('.lang-btn');
+  const languageElements = document.querySelectorAll('[data-lang]');
+  
+  // Set the default language (German)
+  const defaultLang = 'de';
+  setActiveLanguage(defaultLang);
+  
+  // Add click event listeners to language buttons
+  langButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const lang = this.getAttribute('data-lang');
+      setActiveLanguage(lang);
+      
+      // Update URL with language parameter
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      window.history.replaceState({}, '', url);
+      
+      // Store language preference in localStorage
+      localStorage.setItem('preferredLanguage', lang);
+    });
+  });
+  
+  // Check if there's a language parameter in the URL or in localStorage
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlLang = urlParams.get('lang');
+  const storedLang = localStorage.getItem('preferredLanguage');
+  
+  if (urlLang && (urlLang === 'de' || urlLang === 'en')) {
+    setActiveLanguage(urlLang);
+  } else if (storedLang && (storedLang === 'de' || storedLang === 'en')) {
+    setActiveLanguage(storedLang);
+  }
+  
+  // Function to set the active language
+  function setActiveLanguage(lang) {
+    // Activate the correct language button
+    langButtons.forEach(button => {
+      if (button.getAttribute('data-lang') === lang) {
+        button.classList.add('active');
+      } else {
+        button.classList.remove('active');
+      }
+    });
+    
+    // Show elements for the selected language and hide others
+    languageElements.forEach(element => {
+      if (element.getAttribute('data-lang') === lang) {
+        element.style.display = '';
+      } else {
+        element.style.display = 'none';
+      }
+    });
+  }
+  
   // Smooth scrolling for navigation links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
