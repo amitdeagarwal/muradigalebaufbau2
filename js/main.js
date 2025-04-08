@@ -1,11 +1,11 @@
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
   const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const navList = document.querySelector('.nav-list');
+  const mainNav = document.querySelector('.main-nav');
   
-  if (menuToggle && navList) {
+  if (menuToggle && mainNav) {
     menuToggle.addEventListener('click', function() {
-      navList.classList.toggle('active');
+      mainNav.classList.toggle('active');
       menuToggle.classList.toggle('active');
     });
   }
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-list a');
   navLinks.forEach(link => {
     link.addEventListener('click', function() {
-      navList.classList.remove('active');
+      mainNav.classList.remove('active');
       menuToggle.classList.remove('active');
     });
   });
@@ -46,6 +46,39 @@ document.addEventListener('DOMContentLoaded', function() {
       } else {
         header.classList.remove('scrolled');
       }
+    });
+  }
+
+  // Initialize gallery lightbox effect
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  
+  if (galleryItems.length > 0) {
+    galleryItems.forEach(item => {
+      item.addEventListener('click', function() {
+        const imgSrc = this.getAttribute('src');
+        const lightbox = document.createElement('div');
+        lightbox.classList.add('lightbox');
+        
+        const img = document.createElement('img');
+        img.setAttribute('src', imgSrc);
+        
+        const closeBtn = document.createElement('span');
+        closeBtn.classList.add('lightbox-close');
+        closeBtn.innerHTML = '×';
+        
+        lightbox.appendChild(img);
+        lightbox.appendChild(closeBtn);
+        document.body.appendChild(lightbox);
+        
+        // Prevent scrolling when lightbox is open
+        document.body.style.overflow = 'hidden';
+        
+        // Close lightbox when clicking on it
+        lightbox.addEventListener('click', function() {
+          document.body.removeChild(lightbox);
+          document.body.style.overflow = 'auto';
+        });
+      });
     });
   }
 });

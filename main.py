@@ -1,3 +1,7 @@
+"""
+Simple Flask static file server to work with Gunicorn in Replit workflows
+This serves the current directory as static files
+"""
 from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_url_path='', static_folder='.')
@@ -12,4 +16,4 @@ def serve(path):
     return send_from_directory('.', path)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000)
