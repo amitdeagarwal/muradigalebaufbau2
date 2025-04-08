@@ -33,10 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const lang = this.getAttribute('data-lang');
       setActiveLanguage(lang);
       
-      // Update URL with language parameter
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', lang);
-      window.history.replaceState({}, '', url);
+      // For local file usage, we don't modify URL (file:// protocol doesn't support history API well)
+      if (window.location.protocol !== 'file:') {
+        const url = new URL(window.location.href);
+        url.searchParams.set('lang', lang);
+        window.history.replaceState({}, '', url);
+      }
       
       // Store language preference in localStorage
       localStorage.setItem('preferredLanguage', lang);
@@ -44,8 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Check if there's a language parameter in the URL or in localStorage
-  const urlParams = new URLSearchParams(window.location.search);
-  const urlLang = urlParams.get('lang');
+  let urlLang = null;
+  try {
+    // This might fail in file:// protocol
+    const urlParams = new URLSearchParams(window.location.search);
+    urlLang = urlParams.get('lang');
+  } catch (e) {
+    console.log("URL parameter reading not supported in this environment");
+  }
   const storedLang = localStorage.getItem('preferredLanguage');
   
   if (urlLang && (urlLang === 'de' || urlLang === 'en')) {
