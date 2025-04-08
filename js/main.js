@@ -1,153 +1,189 @@
-// Mobile menu toggle
+// Wait until the document is fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  
+  // Mobile Menu Toggle
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const mainNav = document.querySelector('.main-nav');
   
-  if (menuToggle && mainNav) {
-    menuToggle.addEventListener('click', function() {
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', function() {
       mainNav.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    });
-  }
-  
-  // Close menu when clicking on a nav link (for mobile)
-  const navLinks = document.querySelectorAll('.nav-list a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      mainNav.classList.remove('active');
-      menuToggle.classList.remove('active');
-    });
-  });
-  
-  // Language Switcher
-  const langButtons = document.querySelectorAll('.lang-btn');
-  const languageElements = document.querySelectorAll('[data-lang]');
-  
-  // Set the default language (German)
-  const defaultLang = 'de';
-  setActiveLanguage(defaultLang);
-  
-  // Add click event listeners to language buttons
-  langButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const lang = this.getAttribute('data-lang');
-      setActiveLanguage(lang);
-      
-      // For local file usage, we don't modify URL (file:// protocol doesn't support history API well)
-      if (window.location.protocol !== 'file:') {
-        const url = new URL(window.location.href);
-        url.searchParams.set('lang', lang);
-        window.history.replaceState({}, '', url);
-      }
-      
-      // Store language preference in localStorage
-      localStorage.setItem('preferredLanguage', lang);
-    });
-  });
-  
-  // Check if there's a language parameter in the URL or in localStorage
-  let urlLang = null;
-  try {
-    // This might fail in file:// protocol
-    const urlParams = new URLSearchParams(window.location.search);
-    urlLang = urlParams.get('lang');
-  } catch (e) {
-    console.log("URL parameter reading not supported in this environment");
-  }
-  const storedLang = localStorage.getItem('preferredLanguage');
-  
-  if (urlLang && (urlLang === 'de' || urlLang === 'en')) {
-    setActiveLanguage(urlLang);
-  } else if (storedLang && (storedLang === 'de' || storedLang === 'en')) {
-    setActiveLanguage(storedLang);
-  }
-  
-  // Function to set the active language
-  function setActiveLanguage(lang) {
-    // Set the document language
-    document.documentElement.lang = lang;
-    
-    // Activate the correct language button
-    langButtons.forEach(button => {
-      if (button.getAttribute('data-lang') === lang) {
-        button.classList.add('active');
-      } else {
-        button.classList.remove('active');
-      }
-    });
-    
-    // For older browsers that might not support CSS attribute selectors well
-    // Also manually update display properties
-    languageElements.forEach(element => {
-      const elementLang = element.getAttribute('data-lang');
-      if (elementLang === lang) {
-        element.style.display = 'block';
-      } else {
-        element.style.display = 'none';
-      }
+      mobileMenuToggle.classList.toggle('active');
     });
   }
   
   // Smooth scrolling for navigation links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+  const navLinks = document.querySelectorAll('a[href^="#"]');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
       e.preventDefault();
       
       const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+      const targetSection = document.querySelector(targetId);
       
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
+      if (targetSection) {
         window.scrollTo({
-          top: targetElement.offsetTop - 80, // Adjust for header height
+          top: targetSection.offsetTop - 100,
           behavior: 'smooth'
         });
+        
+        // Close mobile menu if open
+        if (mainNav && mainNav.classList.contains('active')) {
+          mainNav.classList.remove('active');
+          mobileMenuToggle.classList.remove('active');
+        }
       }
     });
   });
   
+  // Carousel Functionality
+  const carouselItems = document.querySelectorAll('.carousel-item');
+  const prevBtn = document.querySelector('.carousel-control.prev');
+  const nextBtn = document.querySelector('.carousel-control.next');
+  const indicators = document.querySelectorAll('.indicator');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+  
+  let currentIndex = 0;
+  
+  // Function to show a specific slide
+  function showSlide(index) {
+    // Hide all slides
+    carouselItems.forEach(item => {
+      item.classList.remove('active');
+    });
+    
+    // Update indicators
+    indicators.forEach(ind => {
+      ind.classList.remove('active');
+    });
+    
+    // Update thumbnails
+    thumbnails.forEach(thumb => {
+      thumb.classList.remove('active');
+    });
+    
+    // Show the current slide and indicator
+    if (carouselItems[index]) {
+      carouselItems[index].classList.add('active');
+    }
+    
+    if (indicators[index]) {
+      indicators[index].classList.add('active');
+    }
+    
+    if (thumbnails[index]) {
+      thumbnails[index].classList.add('active');
+    }
+    
+    currentIndex = index;
+  }
+  
+  // Previous button
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      let newIndex = currentIndex - 1;
+      if (newIndex < 0) {
+        newIndex = carouselItems.length - 1;
+      }
+      showSlide(newIndex);
+    });
+  }
+  
+  // Next button
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      let newIndex = currentIndex + 1;
+      if (newIndex >= carouselItems.length) {
+        newIndex = 0;
+      }
+      showSlide(newIndex);
+    });
+  }
+  
+  // Indicator clicks
+  indicators.forEach(indicator => {
+    indicator.addEventListener('click', () => {
+      const index = parseInt(indicator.getAttribute('data-index'));
+      showSlide(index);
+    });
+  });
+  
+  // Thumbnail clicks
+  thumbnails.forEach(thumbnail => {
+    thumbnail.addEventListener('click', () => {
+      const index = parseInt(thumbnail.getAttribute('data-index'));
+      showSlide(index);
+    });
+  });
+  
+  // Zoom functionality for carousel images
+  const zoomImages = document.querySelectorAll('.zoom-image');
+  
+  zoomImages.forEach(img => {
+    img.addEventListener('click', function() {
+      this.classList.toggle('zoomed');
+    });
+  });
+  
+  // Auto-slide (optional)
+  let autoSlideInterval;
+  
+  function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+      let newIndex = currentIndex + 1;
+      if (newIndex >= carouselItems.length) {
+        newIndex = 0;
+      }
+      showSlide(newIndex);
+    }, 5000); // Change slide every 5 seconds
+  }
+  
+  function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+  }
+  
+  // Start auto-slide
+  if (carouselItems.length > 0) {
+    startAutoSlide();
+    
+    // Pause auto-slide on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+      carouselContainer.addEventListener('mouseenter', stopAutoSlide);
+      carouselContainer.addEventListener('mouseleave', startAutoSlide);
+    }
+  }
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (carouselItems.length > 0) {
+      if (e.key === 'ArrowLeft') {
+        let newIndex = currentIndex - 1;
+        if (newIndex < 0) {
+          newIndex = carouselItems.length - 1;
+        }
+        showSlide(newIndex);
+      } else if (e.key === 'ArrowRight') {
+        let newIndex = currentIndex + 1;
+        if (newIndex >= carouselItems.length) {
+          newIndex = 0;
+        }
+        showSlide(newIndex);
+      }
+    }
+  });
+  
   // Header scroll effect
   const header = document.querySelector('.header');
+  
   if (header) {
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-    });
-  }
-
-  // Initialize gallery lightbox effect
-  const galleryItems = document.querySelectorAll('.gallery-item img');
-  
-  if (galleryItems.length > 0) {
-    galleryItems.forEach(item => {
-      item.addEventListener('click', function() {
-        const imgSrc = this.getAttribute('src');
-        const lightbox = document.createElement('div');
-        lightbox.classList.add('lightbox');
-        
-        const img = document.createElement('img');
-        img.setAttribute('src', imgSrc);
-        
-        const closeBtn = document.createElement('span');
-        closeBtn.classList.add('lightbox-close');
-        closeBtn.innerHTML = '×';
-        
-        lightbox.appendChild(img);
-        lightbox.appendChild(closeBtn);
-        document.body.appendChild(lightbox);
-        
-        // Prevent scrolling when lightbox is open
-        document.body.style.overflow = 'hidden';
-        
-        // Close lightbox when clicking on it
-        lightbox.addEventListener('click', function() {
-          document.body.removeChild(lightbox);
-          document.body.style.overflow = 'auto';
-        });
-      });
     });
   }
 });

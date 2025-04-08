@@ -16,6 +16,9 @@
   <meta property="og:title" content="Muradi Garten- und Landschaftsbau - Professionelle Gartengestaltung in Darmstadt">
   <meta property="og:description" content="Ihr Experte für Gartengestaltung, Zaunbau und Teichanlagen in Darmstadt und Umgebung. Professionelle Garten- und Landschaftsbauarbeiten im Umkreis von 50km.">
   <meta property="og:type" content="website">
+  
+  <!-- Benutzerdefinierte Fonts einbinden -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="header">
@@ -32,39 +35,29 @@
         </button>
         
         <ul class="nav-list">
-          <li><a href="#hero" data-lang="de">Home</a><a href="#hero" data-lang="en" style="display:none">Home</a></li>
-          <li><a href="#services" data-lang="de">Leistungen</a><a href="#services" data-lang="en" style="display:none">Services</a></li>
-          <li><a href="#gallery" data-lang="de">Referenzen</a><a href="#gallery" data-lang="en" style="display:none">Gallery</a></li>
-          <li><a href="#about" data-lang="de">Über uns</a><a href="#about" data-lang="en" style="display:none">About us</a></li>
-          <li><a href="#contact" data-lang="de">Kontakt</a><a href="#contact" data-lang="en" style="display:none">Contact</a></li>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#services">Leistungen</a></li>
+          <li><a href="#gallery">Referenzen</a></li>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#contact">Kontakt</a></li>
         </ul>
       </nav>
       
       <div class="header-contact">
         <a href="tel:+4917676984688" class="phone-link">+49 176 76 98 46 88</a>
       </div>
-      
-      <div class="language-selector">
-        <button class="lang-btn active" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
     </div>
   </header>
 
   <section id="hero" class="hero">
     <div class="hero-content">
-      <h1 data-lang="de">Muradi Garten- und<br>Landschaftsbau Darmstadt</h1>
-      <h1 data-lang="en" style="display:none">Muradi Garden and<br>Landscape Construction Darmstadt</h1>
+      <h1>Muradi Garten- und<br>Landschaftsbau Darmstadt</h1>
       
-      <p data-lang="de">Wir gestalten Ihren Traumgarten mit Leidenschaft und Professionalität</p>
-      <p data-lang="en" style="display:none">We design your dream garden with passion and professionalism</p>
+      <p>Wir gestalten Ihren Traumgarten mit Leidenschaft und Professionalität</p>
       
       <div class="hero-buttons">
-        <a href="#services" class="btn btn-primary" data-lang="de">Unsere Leistungen</a>
-        <a href="#services" class="btn btn-primary" data-lang="en" style="display:none">Our Services</a>
-        
-        <a href="#contact" class="btn btn-secondary" data-lang="de">Kontakt aufnehmen</a>
-        <a href="#contact" class="btn btn-secondary" data-lang="en" style="display:none">Contact Us</a>
+        <a href="#services" class="btn btn-primary">Unsere Leistungen</a>
+        <a href="#contact" class="btn btn-secondary">Kontakt aufnehmen</a>
       </div>
     </div>
     
@@ -74,24 +67,46 @@
   <section id="about" class="about">
     <div class="container">
       <div class="section-title">
-        <h2 data-lang="de">Über uns</h2>
-        <h2 data-lang="en" style="display:none">About Us</h2>
-        <p data-lang="de">Lernen Sie Muradi Garten- und Landschaftsbau kennen</p>
-        <p data-lang="en" style="display:none">Get to know Muradi Garden and Landscape Construction</p>
+        <h2>Über uns</h2>
+        <p>Lernen Sie Muradi Garten- und Landschaftsbau kennen</p>
       </div>
       
       <div class="about-content">
         <div class="about-text">
+          <div class="about-badge">Seit 2018 in Darmstadt</div>
           <h3>Ein junges, starkes und professionelles Team</h3>
           <p>Wir sind ein junges, starkes und professionelles Team aus dem Herzen Darmstadts mit dem Fokus auf Garten- und Landschaftsbau. Es gibt nichts was für uns unmöglich ist. Jede Aufgabe nehmen wir als Herausforderung an, planen die Umsetzungen und setzen diese für Sie in schönster Form um.</p>
           
-          <p>Ein Garten stellt heute ein wichtiges Stück Ihrer Lebensqualität dar. Der Garten ist ein Ort, an dem Sie sich wohl fühlen und entspannen sollen. Wir fahren kostenlos zu Ihnen im Umkreis von 50km (Darmstadt), beraten Sie gerne bei unserem Erstkontakt und besprechen die Planung, Garten Neu- und Umgestaltung.</p>
+          <div class="about-feature">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <h4>Kostenlose Beratung</h4>
+              <p>Wir fahren kostenlos zu Ihnen im Umkreis von 50km (Darmstadt), beraten Sie gerne bei unserem Erstkontakt und besprechen die Planung, Garten Neu- und Umgestaltung.</p>
+            </div>
+          </div>
           
-          <p>Gerne können Sie sich unsere Arbeiten unter dem Reiter Referenzen ansehen. Teilen Sie uns Ihren Wunsch mit, damit wir auch Ihren Garten verschönern können. Wir wünschen uns Sie auch als Kunden zu gewinnen.</p>
+          <div class="about-feature">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <h4>Individuelle Planung</h4>
+              <p>Ein Garten stellt heute ein wichtiges Stück Ihrer Lebensqualität dar. Der Garten ist ein Ort, an dem Sie sich wohl fühlen und entspannen sollen.</p>
+            </div>
+          </div>
+          
+          <div class="about-feature">
+            <div class="feature-icon">✓</div>
+            <div class="feature-text">
+              <h4>Professionelle Umsetzung</h4>
+              <p>Teilen Sie uns Ihren Wunsch mit, damit wir auch Ihren Garten verschönern können. Wir wünschen uns Sie auch als Kunden zu gewinnen.</p>
+            </div>
+          </div>
         </div>
         
         <div class="about-image">
           <img src="images/gallery/garden3.jpg" alt="Muradi Gartenbau Team">
+          <div class="about-image-caption">
+            <span>Ihr Partner für Gartengestaltung in Darmstadt</span>
+          </div>
         </div>
       </div>
     </div>
@@ -100,10 +115,8 @@
   <section id="services" class="services">
     <div class="container">
       <div class="section-title">
-        <h2 data-lang="de">Unsere Leistungen</h2>
-        <h2 data-lang="en" style="display:none">Our Services</h2>
-        <p data-lang="de">Professionelle Garten- und Landschaftsgestaltung in Darmstadt und Umgebung</p>
-        <p data-lang="en" style="display:none">Professional garden and landscape design in Darmstadt and surrounding areas</p>
+        <h2>Unsere Leistungen</h2>
+        <p>Professionelle Garten- und Landschaftsgestaltung in Darmstadt und Umgebung</p>
       </div>
       
       <div class="services-grid">
@@ -177,48 +190,91 @@
   <section id="gallery" class="gallery">
     <div class="container">
       <div class="section-title">
-        <h2 data-lang="de">Unsere Referenzen</h2>
-        <h2 data-lang="en" style="display:none">Our Gallery</h2>
-        <p data-lang="de">Einblicke in unsere erfolgreichen Garten- und Landschaftsprojekte in Darmstadt und Umgebung</p>
-        <p data-lang="en" style="display:none">Insights into our successful garden and landscape projects in Darmstadt and surrounding areas</p>
+        <h2>Unsere Referenzen</h2>
+        <p>Einblicke in unsere erfolgreichen Garten- und Landschaftsprojekte in Darmstadt und Umgebung</p>
       </div>
       
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="images/gallery/garden1.jpg" alt="Gartenprojekt 1">
+      <!-- Carousel Container -->
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-slide">
+            <div class="carousel-item active" data-index="0">
+              <img src="images/gallery/garden1.jpg" alt="Gartenprojekt 1" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="1">
+              <img src="images/gallery/garden2.jpg" alt="Gartenprojekt 2" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="2">
+              <img src="images/gallery/garden3.jpg" alt="Gartenprojekt 3" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="3">
+              <img src="images/gallery/garden4.jpg" alt="Gartenprojekt 4" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="4">
+              <img src="images/gallery/garden5.jpg" alt="Gartenprojekt 5" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="5">
+              <img src="images/gallery/garden6.jpg" alt="Gartenprojekt 6" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="6">
+              <img src="images/gallery/garden7.jpg" alt="Gartenprojekt 7" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="7">
+              <img src="images/gallery/garden8.jpg" alt="Gartenprojekt 8" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="8">
+              <img src="images/gallery/garden9.jpg" alt="Gartenprojekt 9" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="9">
+              <img src="images/gallery/garden10.jpg" alt="Gartenprojekt 10" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="10">
+              <img src="images/gallery/garden11.jpg" alt="Gartenprojekt 11" class="zoom-image">
+            </div>
+            <div class="carousel-item" data-index="11">
+              <img src="images/gallery/garden12.jpg" alt="Gartenprojekt 12" class="zoom-image">
+            </div>
+          </div>
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden2.jpg" alt="Gartenprojekt 2">
+        
+        <button class="carousel-control prev">❮</button>
+        <button class="carousel-control next">❯</button>
+        
+        <div class="carousel-indicators">
+          <span class="indicator active" data-index="0"></span>
+          <span class="indicator" data-index="1"></span>
+          <span class="indicator" data-index="2"></span>
+          <span class="indicator" data-index="3"></span>
+          <span class="indicator" data-index="4"></span>
+          <span class="indicator" data-index="5"></span>
+          <span class="indicator" data-index="6"></span>
+          <span class="indicator" data-index="7"></span>
+          <span class="indicator" data-index="8"></span>
+          <span class="indicator" data-index="9"></span>
+          <span class="indicator" data-index="10"></span>
+          <span class="indicator" data-index="11"></span>
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden3.jpg" alt="Gartenprojekt 3">
+      </div>
+      
+      <!-- Thumbnail Navigation -->
+      <div class="gallery-thumbnails">
+        <div class="thumbnail active" data-index="0">
+          <img src="images/gallery/garden1.jpg" alt="Thumbnail 1">
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden4.jpg" alt="Gartenprojekt 4">
+        <div class="thumbnail" data-index="1">
+          <img src="images/gallery/garden2.jpg" alt="Thumbnail 2">
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden5.jpg" alt="Gartenprojekt 5">
+        <div class="thumbnail" data-index="2">
+          <img src="images/gallery/garden3.jpg" alt="Thumbnail 3">
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden6.jpg" alt="Gartenprojekt 6">
+        <div class="thumbnail" data-index="3">
+          <img src="images/gallery/garden4.jpg" alt="Thumbnail 4">
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden7.jpg" alt="Gartenprojekt 7">
+        <div class="thumbnail" data-index="4">
+          <img src="images/gallery/garden5.jpg" alt="Thumbnail 5">
         </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden8.jpg" alt="Gartenprojekt 8">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden9.jpg" alt="Gartenprojekt 9">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden10.jpg" alt="Gartenprojekt 10">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden11.jpg" alt="Gartenprojekt 11">
-        </div>
-        <div class="gallery-item">
-          <img src="images/gallery/garden12.jpg" alt="Gartenprojekt 12">
+        <div class="thumbnail" data-index="5">
+          <img src="images/gallery/garden6.jpg" alt="Thumbnail 6">
         </div>
       </div>
     </div>
@@ -227,49 +283,40 @@
   <section id="contact" class="contact">
     <div class="container">
       <div class="section-title">
-        <h2 data-lang="de">Kontakt</h2>
-        <h2 data-lang="en" style="display:none">Contact</h2>
-        <p data-lang="de">Wir freuen uns darauf, von Ihnen zu hören! Kontaktieren Sie uns für Ihren kostenlosen Beratungstermin.</p>
-        <p data-lang="en" style="display:none">We look forward to hearing from you! Contact us for your free consultation appointment.</p>
+        <h2>Kontakt</h2>
+        <p>Wir freuen uns darauf, von Ihnen zu hören! Kontaktieren Sie uns für Ihren kostenlosen Beratungstermin.</p>
       </div>
       
       <div class="contact-grid">
         <!-- Contact Information -->
         <div class="contact-info">
-          <h3 data-lang="de">Kontaktinformation</h3>
-          <h3 data-lang="en" style="display:none">Contact Information</h3>
+          <h3>Kontaktinformation</h3>
           <div class="contact-info-item">
             <span class="contact-icon">📱</span>
             <div>
-              <h4 data-lang="de">Telefon</h4>
-              <h4 data-lang="en" style="display:none">Phone</h4>
+              <h4>Telefon</h4>
               <p><a href="tel:+4917676984688">+49 176 76 98 46 88</a></p>
             </div>
           </div>
           <div class="contact-info-item">
             <span class="contact-icon">📧</span>
             <div>
-              <h4 data-lang="de">E-Mail</h4>
-              <h4 data-lang="en" style="display:none">Email</h4>
+              <h4>E-Mail</h4>
               <p><a href="mailto:info@muradi-gartenbau.de">info@muradi-gartenbau.de</a></p>
             </div>
           </div>
           <div class="contact-info-item">
             <span class="contact-icon">🏢</span>
             <div>
-              <h4 data-lang="de">Adresse</h4>
-              <h4 data-lang="en" style="display:none">Address</h4>
-              <p data-lang="de">Darmstadt<br>Wir kommen zu Ihnen im Umkreis von 50km</p>
-              <p data-lang="en" style="display:none">Darmstadt<br>We come to you within a 50km radius</p>
+              <h4>Adresse</h4>
+              <p>Darmstadt<br>Wir kommen zu Ihnen im Umkreis von 50km</p>
             </div>
           </div>
           <div class="contact-info-item">
             <span class="contact-icon">⏰</span>
             <div>
-              <h4 data-lang="de">Öffnungszeiten</h4>
-              <h4 data-lang="en" style="display:none">Opening Hours</h4>
-              <p data-lang="de">Montag - Samstag: 9:00 - 19:00 Uhr</p>
-              <p data-lang="en" style="display:none">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+              <h4>Öffnungszeiten</h4>
+              <p>Montag - Samstag: 9:00 - 19:00 Uhr</p>
             </div>
           </div>
         </div>
@@ -280,8 +327,7 @@
             <img src="images/map/darmstadt_map.jpg" alt="Karte von Darmstadt" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
           </a>
           <div class="service-area-note">
-            <p data-lang="de">Wir bieten unsere Dienstleistungen in Darmstadt und im Umkreis von 50km an</p>
-            <p data-lang="en" style="display:none">We offer our services in Darmstadt and within a 50km radius</p>
+            <p>Wir bieten unsere Dienstleistungen in Darmstadt und im Umkreis von 50km an</p>
           </div>
         </div>
       </div>
@@ -292,42 +338,34 @@
     <div class="container footer-container">
       <div class="footer-logo">
         <img src="images/logo.svg" alt="Muradi Garten- und Landschaftsbau Logo" style="width:200px; margin-bottom:1rem;">
-        <p data-lang="de">Ihr Experte für Gartengestaltung und Landschaftsbau in Darmstadt und Umgebung.</p>
-        <p data-lang="en" style="display:none">Your expert for garden design and landscaping in Darmstadt and surrounding areas.</p>
+        <p>Ihr Experte für Gartengestaltung und Landschaftsbau in Darmstadt und Umgebung.</p>
       </div>
       
       <div class="footer-links">
-        <h4 data-lang="de">Schnellzugriff</h4>
-        <h4 data-lang="en" style="display:none">Quick Links</h4>
+        <h4>Schnellzugriff</h4>
         <ul>
-          <li><a href="#hero" data-lang="de">Home</a><a href="#hero" data-lang="en" style="display:none">Home</a></li>
-          <li><a href="#about" data-lang="de">Über uns</a><a href="#about" data-lang="en" style="display:none">About Us</a></li>
-          <li><a href="#services" data-lang="de">Leistungen</a><a href="#services" data-lang="en" style="display:none">Services</a></li>
-          <li><a href="#gallery" data-lang="de">Referenzen</a><a href="#gallery" data-lang="en" style="display:none">Gallery</a></li>
-          <li><a href="#contact" data-lang="de">Kontakt</a><a href="#contact" data-lang="en" style="display:none">Contact</a></li>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">Über uns</a></li>
+          <li><a href="#services">Leistungen</a></li>
+          <li><a href="#gallery">Referenzen</a></li>
+          <li><a href="#contact">Kontakt</a></li>
         </ul>
       </div>
       
       <div class="footer-links">
-        <h4 data-lang="de">Kontakt</h4>
-        <h4 data-lang="en" style="display:none">Contact</h4>
+        <h4>Kontakt</h4>
         <ul>
-          <li data-lang="de">Telefon: +49 176 76 98 46 88</li>
-          <li data-lang="en" style="display:none">Phone: +49 176 76 98 46 88</li>
-          <li data-lang="de">E-Mail: info@muradi-gartenbau.de</li>
-          <li data-lang="en" style="display:none">Email: info@muradi-gartenbau.de</li>
-          <li data-lang="de">Region: Darmstadt und 50km Umkreis</li>
-          <li data-lang="en" style="display:none">Region: Darmstadt and 50km radius</li>
-          <li data-lang="de">Öffnungszeiten: Mo-Sa, 9:00-19:00 Uhr</li>
-          <li data-lang="en" style="display:none">Opening Hours: Mon-Sat, 9:00 AM - 7:00 PM</li>
+          <li>Telefon: +49 176 76 98 46 88</li>
+          <li>E-Mail: info@muradi-gartenbau.de</li>
+          <li>Region: Darmstadt und 50km Umkreis</li>
+          <li>Öffnungszeiten: Mo-Sa, 9:00-19:00 Uhr</li>
         </ul>
       </div>
     </div>
     
     <div class="copyright">
       <div class="container">
-        <p data-lang="de">&copy; 2025 Muradi Garten- und Landschaftsbau. Alle Rechte vorbehalten.</p>
-        <p data-lang="en" style="display:none">&copy; 2025 Muradi Garden and Landscape Construction. All rights reserved.</p>
+        <p>&copy; 2025 Muradi Garten- und Landschaftsbau. Alle Rechte vorbehalten.</p>
       </div>
     </div>
   </footer>
