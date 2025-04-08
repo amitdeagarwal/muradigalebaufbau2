@@ -1,0 +1,9 @@
+run = "python -m http.server 5000"
+hidden = ["replit.nix"]
+
+[nix]
+channel = "stable-24_05"
+
+[[ports]]
+localPort = 5000
+externalPort = 80

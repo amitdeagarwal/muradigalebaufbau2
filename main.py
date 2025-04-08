@@ -1,6 +1,7 @@
 """
-Simple Flask static file server to work with Gunicorn in Replit workflows
-This serves the current directory as static files
+Minimal Flask app for serving static HTML files
+This file exists only to support Replit's workflow system
+The actual site is static HTML, CSS and JS
 """
 from flask import Flask, send_from_directory
 
