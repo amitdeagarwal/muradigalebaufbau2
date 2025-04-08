@@ -228,7 +228,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../images/background_garden.jpg');
+  background-image: url('../images/hero/background_garden.jpg');
   background-size: cover;
   background-position: center;
   color: white;
