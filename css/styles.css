@@ -517,11 +517,10 @@ section {
   background-color: var(--background-alt);
 }
 
-.about-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  align-items: center;
+.about-text {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .about-text h3 {
