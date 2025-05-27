@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sections>
-  <section>
-    <loc>https://muradigalebau.de/#ueber-uns</loc>
-    <title>Über Uns</title>
-  </section>
-  <section>
-    <loc>https://muradigalebau.de/#services</loc>
-    <title>Leistungen</title>
-  </section>
-  <section>
-    <loc>https://muradigalebau.de/#referenzen</loc>
-    <title>Referenzen</title>
-  </section>
-  <section>
-    <loc>https://muradigalebau.de/#kontakt</loc>
-    <title>Kontakt</title>
-  </section>
-</sections>
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://muradigalebau.de/</loc>
+    <lastmod>2025-05-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
